@@ -9,9 +9,9 @@ class ListaSor
         this.#index = index;
         szuloElem.append(`
             <tr>
-                <td>${tartalom.rendszam}</td>
-                <td>${tartalom.modell}</td>
-                <td><button>❌</button></td>
+                <td class="border">${tartalom.rendszam}</td>
+                <td class="border">${tartalom.modell}</td>
+                <td class="border"><button class="btn">❌</button></td>
             </tr>
         `);
         const TORLES_GOMB_ELEM = this.#szuloElem.children("tr:last-child").children("td").children("button");

@@ -1,6 +1,5 @@
 class Urlap
 {
-    #autoLista;
     #szuloElem;
     #rendszamInputElem;
     #modellInputElem;
@@ -8,7 +7,6 @@ class Urlap
 
     constructor(szuloElem)
     {
-        this.#autoLista = [];
         this.#szuloElem = szuloElem;
         this.#szuloElem.append(`
             <form>
@@ -24,11 +22,14 @@ class Urlap
         this.#submitGombElem = $("#ujadat > form > button");
         this.#submitGombElem.on("click", (event) => {
             event.preventDefault();
-            this.#autoLista.push({
-                rendszam: this.#rendszamInputElem.val(),
-                modell: this.#modellInputElem.val()
-            });
-            console.log(this.#autoLista[this.#autoLista.length - 1]);
+            window.dispatchEvent(new CustomEvent("ujElemEvent", {
+                detail: {
+                    ujElem: {
+                        rendszam: this.#rendszamInputElem.val(),
+                        modell: this.#modellInputElem.val()
+                    }
+                }
+            }));
         });
     }
 }
